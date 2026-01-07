@@ -6,7 +6,7 @@ const Header = () => {
     
     <>
     <header className="">
-        <ul className="w-[60rem]  mt-[3rem] h-[3rem] space-x-[4rem] flex " >
+        <ul className="w-[60rem]  mt-[3rem] h-[3rem] space-x-[3rem] mx-[4rem] flex " >
             <img src={require("./assets/SHOP.CO.png")}/>
             <li>Shop</li>
             <li>On Sale</li>
