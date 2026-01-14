@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 
 
-
 const Maincomponent = () => {
     const URL=process.env.REACT_APP_API_URL
     console.log(URL)
@@ -30,11 +29,11 @@ return (
     
     <div className=' flex grid grid-cols-4 my-10'>
         { data.map((items)=>(
-            <div className='card bg-emerald-800 mx-5 my-1 w-80 h-[35rem]'>
+            <div className='card bg-emerald-800 mx-5 my-1 w-80 h-[35rem]' key={items.id}>
             <h1> {items?.title}</h1>
             <img src={items?.image}/>
                <p>{items?.price}</p>
-        
+           <link to {`/details/${items.id}`}></link>
            </div> 
         )) }
 

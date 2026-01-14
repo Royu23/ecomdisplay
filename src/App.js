@@ -1,9 +1,9 @@
-
 import './App.css';
-// import Footer from './Components/footer';
 import Header from './Components/Header';
-import Maincomponent from './Components/Maincomponent';
+import Maincomponent from './Components/Card';
+
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Footer from './Components/Footer';
 
 function App() {
  
@@ -15,7 +15,7 @@ function App() {
    
       <Header/>
       <Maincomponent/>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
     
   );
