@@ -2,10 +2,11 @@ import React from "react"
 import { useState } from "react"
 import image from "./assets/Frame 1.png"
 
-const Header = () => {
+const Header = ({cartdata}) => {
 
    const [search,setsearch]=useState("");
     console.log(search)
+    console.log(cartdata,"cart")
 
   return (
     
@@ -13,7 +14,7 @@ const Header = () => {
     <header className="flex mt-[3rem] h-[3rem]  w-[60rem] ">
         <img src={require("./assets/SHOP.CO.png")}/>
         <ul className=" flex space-x-[3rem] mx-[4rem]" >
-          
+           
             <li>Shop</li>
             <li>On Sale</li>
             <li>New Arrivals</li>

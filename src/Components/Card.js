@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import CardDetails from'../Pages/CardDetails'
+import Header from './Header'
+import Footer from './Footer'
 
 
 
-const Maincomponent = () => {
+const Maincomponent = ({Addtocart}) => {
     const URL=process.env.REACT_APP_API_URL
     console.log(URL)
+    console.log(Addtocart)
     const [data,setdata]=useState([])
 
     useEffect(()=>{
@@ -13,31 +18,28 @@ const Maincomponent = () => {
     },[])
    console.log(data)
 
-   const fetchdata=()=>{
-    fetch(`${URL}/products`)
+   const fetchdata=()=>{fetch(`${URL}/products`)
      .then(res=>res.json())
      .then(product=>{
         console.log(product)
         setdata(product)
-     })
-
-
-
-}
+     })}
 return (
 <>
-    
+  
     <div className=' flex grid grid-cols-4 my-10'>
         { data.map((items)=>(
             <div className='card bg-emerald-800 mx-5 my-1 w-80 h-[35rem]' key={items.id}>
             <h1> {items?.title}</h1>
             <img src={items?.image}/>
                <p>{items?.price}</p>
-           <link to {`/details/${items.id}`}></link>
-           </div> 
+             {<Link to={ `/details/${items.id}`}>view button</Link>}
+            <button onClick={()=>Addtocart(items)}>add to cart</button>
+              </div>
         )) }
 
     </div>
+    <Footer/>
     </>
   )
 }
