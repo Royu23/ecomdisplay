@@ -4,16 +4,17 @@ import Maincomponent from "./Components/Card";
 import CardDetails from "./Pages/CardDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Pages/Login";
-import { useState, createContext } from "react";
+import { useState, createContext,useContext } from "react";
 import Footer from "./Components/Footer";
 import Cart from "./Cart.js";
-export const cartContext = createContext();
+  const cartContext = createContext();
 
-function App() {
-  const [cart, setcart] = useState([]);
+ export function App() {
+  
   const [name, setname] = useState("royal");
-
-  const Addtocart = (items) => {
+ 
+  const [cart, setcart] = useState([]);
+  const cartdata  = (items) => {
     console.log( "hello");
     const cartproduct = [
       {
@@ -24,8 +25,8 @@ function App() {
     ];
     setcart((prevState) => [...prevState, ...cartproduct]);
   };
+ }
 
-  console.log(cart,"cartsss");
 
   const accessToken = localStorage.getItem("token");
   var user = JSON.parse(localStorage.getItem("userdata"));
@@ -36,10 +37,10 @@ function App() {
         {/* {accessToken &&(
         <Header cartdata={cart} Loginuser={user} />)
          } */}
-         <cartContext.Provider value={cart}>
+         <cartContext.Provider value={{cart,cartdata}}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Maincomponent />} />
+            <Route path="/" element={<Maincomponent  />} />
             <Route path="/details/:id" element={<CardDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart/>} />

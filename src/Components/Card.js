@@ -6,12 +6,21 @@ import { useContext } from "react";
 
 
 
+
 const Maincomponent = () => {
   const URL = process.env.REACT_APP_API_URL;
   console.log(URL);
+  
   const [data, setdata] = useState([]);
-  const cartdata=useContext(cartContext)
+ 
   console.log(cartdata,"cartdata")
+  
+    const[cartdata]=useContext(cartContext)
+    const sendcart=()=>{
+      cartdata(items)
+
+    };
+  }
 
   useEffect(() => {
     fetchdata();
