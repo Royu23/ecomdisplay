@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import CardDetails from'../Pages/CardDetails'
-import Header from './Header'
-import Footer from './Footer'
-
-
-
-const Maincomponent = ({Addtocart}) => {
+const Maincomponent = ({Addtocart}) => { 
     const URL=process.env.REACT_APP_API_URL
     console.log(URL)
     console.log(Addtocart)
@@ -15,6 +9,7 @@ const Maincomponent = ({Addtocart}) => {
     useEffect(()=>{
         fetchdata()
 
+        
     },[])
    console.log(data)
 
@@ -26,9 +21,12 @@ const Maincomponent = ({Addtocart}) => {
      })}
 return (
 <>
-  
+  <div>
+   <img src={require("../assets/Frame 1.png")} alt='shop.co'/>
+
+  </div>
     <div className=' flex grid grid-cols-4 my-10'>
-        { data.map((items)=>(
+        { data?.map((items)=>(
             <div className='card bg-emerald-800 mx-5 my-1 w-80 h-[35rem]' key={items.id}>
             <h1> {items?.title}</h1>
             <img src={items?.image}/>
@@ -37,11 +35,7 @@ return (
             <button onClick={()=>Addtocart(items)}>add to cart</button>
               </div>
         )) }
-
-    </div>
-    <Footer/>
+        </div>
     </>
-  )
-}
-
+)}
 export default Maincomponent

@@ -1,26 +1,28 @@
-import { useNavigate, useParams } from "react-router-dom"
+
+import  React,{ useContext } from "react";
+import { cartContext } from "./App";
+
 
 const Cart=()=>{
- const {id}=useParams();
- const url=process.env.REACT_APP_API_URL;
- const navigate=useNavigate();
- const idArray=[];
 
-
- const updateArray=idArray.concat(id);
- console.log(updateArray
-
- );
- navigate("/")
-
-
-
-
-
-    return(
+    const carts=useContext(cartContext)
+    console.log(carts);
+ return(
         <div>
-            '
-        </div>
+            {carts.map((detail)=>{
+                <div key={`${detail}?.id`}>
+                    <h3>{`${detail}?.title`}</h3>
+                    <h6>{`${detail}?.price`}</h6>
+
+                   </div>
+                }
+
+
+
+           ) }
+            </div>
+            
+     
     )
 }
 export default Cart
