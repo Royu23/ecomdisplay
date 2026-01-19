@@ -6,7 +6,7 @@ import { cartContext } from "./App";
 const Cart=()=>{
 
     const carts=useContext(cartContext)
-    console.log(carts);
+    console.log({carts},"cart");
  return(
         <div>
             {carts.map((detail)=>{

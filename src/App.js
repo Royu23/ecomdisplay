@@ -9,12 +9,12 @@ import Footer from "./Components/Footer";
 import Cart from "./Cart.js";
 export const cartContext = createContext();
 
-function App(fetchdata) {
+function App() {
   const [cart, setcart] = useState([]);
   const [name, setname] = useState("royal");
 
   const Addtocart = (items) => {
-    console.log(fetchdata, "hello");
+    console.log( "hello");
     const cartproduct = [
       {
         id: items.id,
@@ -25,7 +25,7 @@ function App(fetchdata) {
     setcart((prevState) => [...prevState, ...cartproduct]);
   };
 
-  console.log(cart);
+  console.log(cart,"cartsss");
 
   const accessToken = localStorage.getItem("token");
   var user = JSON.parse(localStorage.getItem("userdata"));
@@ -39,7 +39,7 @@ function App(fetchdata) {
          <cartContext.Provider value={cart}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Maincomponent Addtocart={Addtocart} />} />
+            <Route path="/" element={<Maincomponent />} />
             <Route path="/details/:id" element={<CardDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart/>} />
