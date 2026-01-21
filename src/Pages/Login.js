@@ -12,6 +12,10 @@ const Login=()=>{
      loginuser();
     },[])
 
+    const Admin=()=>{
+        navigate("/admin")
+    }
+
 
     const loginuser=()=>{
         console.log(username,"email");
@@ -67,6 +71,7 @@ const Login=()=>{
              <label>password</label>
              <input type="password" placeholder="password" value={pass}onChange={(e)=>setpass(e.target.value)}></input>
              <button type="submit" onClick={loginuser}>sign in</button>
+             <button onClick={Admin}>Admin</button>
             </div>
 
 

@@ -3,24 +3,11 @@ import { Link } from "react-router-dom";
 import { cartContext } from "../App";
 import { useContext } from "react";
 
-
-
-
-
-const Maincomponent = () => {
+const Maincomponent = ({ cartdata }) => {
   const URL = process.env.REACT_APP_API_URL;
   console.log(URL);
-  
-  const [data, setdata] = useState([]);
- 
-  console.log(cartdata,"cartdata")
-  
-    const[cartdata]=useContext(cartContext)
-    const sendcart=()=>{
-      cartdata(items)
 
-    };
-  }
+  const [data, setdata] = useState([]);
 
   useEffect(() => {
     fetchdata();
