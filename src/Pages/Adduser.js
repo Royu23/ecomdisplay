@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Adduser = ({cancelled}) => {
+const Adduser = ({fetchuser,cancelled}) => {
+  const url=process.env.REACT_APP_URL
   
   const [state, setstate] = useState({
     fullname: "",
@@ -26,17 +27,14 @@ const Adduser = ({cancelled}) => {
   const Handlesubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios
-        .post(
-          "https://ca222ac132b6ba04ed1b.free.beeceptor.com/api/users/",
-          state,
-        )
-        .then((response) => {
+      const response = await axios.post(`${url}`,state)
+      if(response.data){
           console.log("success",response.data);
-          alert("user added successfully");
-         
-          
-        });
+          // alert("user added successfully");
+         fetchuser()
+         cancelled()
+      }
+     
     } catch (error) {
       console.log("data isnt fetched");
     }

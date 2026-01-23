@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Adduser from "./Adduser";
@@ -8,7 +8,7 @@ const Admin = () => {
   const [formuser, setformuser] = useState(false);
   const[user,setuser]=useState([]);
   const [error,seterror]=useState();
-  const Url=process.env.REACT_APP_URL
+ const Url=process.env.REACT_APP_URL
 
   const Useradd = () => {
     setformuser(true);
@@ -19,27 +19,32 @@ const Admin = () => {
   const Alluser=()=>{
     navigate("/allusers")
   }
-  
-  const postmethod=async()=>{
+
+  useEffect(()=>{
+  getmethod()
+  },[])
+
+  const getmethod=async()=>{
+    console.log("reached")
     try{
-    const response=await axios.post(`${Url}`)
+    const response=await axios.get(`${Url}`);
     setuser(response.data)
     console.log(user);
   }
   catch(error){
-    seterror(error)
+    seterror(error);
   }
 }
 
   return  (
-    <> 
+    <>
       <button  className="font-bold bg-teal-500"onClick={Useradd}>Add user</button>
    
     {formuser &&(
       <Adduser
+      fetchuser={()=>getmethod()}
       cancelled={()=>setformuser(false)}/>
-
-      )}
+    )}
     
       
     </>
