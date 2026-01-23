@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Adduser = () => {
+const Adduser = ({cancelled}) => {
   
   const [state, setstate] = useState({
     fullname: "",
@@ -71,6 +71,7 @@ const Adduser = () => {
         />
 
         <button type="submit">Submit</button>
+        <button onClick={cancelled}>cancel</button>
       </form>
     </div>
   );

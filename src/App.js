@@ -11,6 +11,7 @@ import Adduser from "./Pages/Adduser.js";
 import Admin from "./Pages/Admin.js";
 import Allusers from "./Pages/Allusers.js";
 import Userdetails from "./Pages/Userdetails.js";
+import AdminRoutes from "./Pages/AdminRoute.js";
   export const cartContext = createContext();
 
  export function App() {
@@ -46,9 +47,9 @@ import Userdetails from "./Pages/Userdetails.js";
             <Route path="/details/:id" element={<CardDetails />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart/>} />
-            <Route path="/admin" element={<Admin/>}/>
-            {/* <Route path="/adduser" element={<Adduser/>}/> */}
-            <Route path="/allusers" element={<Allusers/>}/> 
+            <Route path="/admin/*" element={<AdminRoutes/>}/>
+            
+             
             <Route path="/userdetails/:id" element={<Userdetails/>}/>
              </Routes>
         </BrowserRouter>
