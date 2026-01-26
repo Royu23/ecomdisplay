@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { cartContext } from "../App";
-import { useContext } from "react";
 
-const Maincomponent = ({ cartdata }) => {
-  const URL = process.env.REACT_APP_API_URL;
-  console.log(URL);
-
-  const [data, setdata] = useState([]);
+const Maincomponent = ({ datacart }) => {
+const url = process.env.REACT_APP_API_URL;
+const [data, setdata] = useState([]);
 
   useEffect(() => {
     fetchdata();
@@ -15,13 +11,16 @@ const Maincomponent = ({ cartdata }) => {
   console.log(data);
 
   const fetchdata = () => {
-    fetch(`${URL}/products`)
+    fetch(`${url}/api/products`)
+
+
       .then((res) => res.json())
       .then((product) => {
         console.log(product);
         setdata(product);
       });
   };
+
 
   return (
     <>
@@ -37,8 +36,8 @@ const Maincomponent = ({ cartdata }) => {
             <h1> {items?.title}</h1>
             <img src={items?.image} />
             <p>{items?.price}</p>
-            {<Link to={`/details/${items.id}`}>view button</Link>}
-            <button onClick={() => cartdata(items)}>add to cart</button>
+            {<Link to={`/details/${items.id}`}><button>view button</button></Link>}
+            <button onClick={() => datacart(items)}>add to cart</button>
           </div>
         ))}
       </div>

@@ -4,12 +4,12 @@ import Userdetails from "./Userdetails";
 
 const AdminRoutes = () => {
   return (
-    <diV>
+    <>
       <Routes>
         <Route path="/" element={<Admin/>}/>
         <Route path="/userdetails/:id" element={<Userdetails/>}/>
       </Routes>
-    </diV>
+    </>
   );
 
 

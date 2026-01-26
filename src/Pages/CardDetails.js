@@ -5,14 +5,14 @@ import {data,  useParams,Link } from "react-router-dom";
  const CardDetails=()=>{
  const {id}=useParams();
  const[product,setproduct]=useState("");
-   //   const URL=process.env.REACT_APP_API_URL
+    const url=process.env.REACT_APP_API_URL
 
  useEffect(()=>{
      getProductinfo();
 
 },[id])  
   function getProductinfo(){
-   fetch(`https://fakestoreapi.com/products/${id}`)
+   fetch(`${url}/api/products/${id}`)
   .then(response => response.json())
   .then(data =>{ 
               console.log(data)
@@ -23,7 +23,7 @@ import {data,  useParams,Link } from "react-router-dom";
 
  return(
     <div key={product.id}>
-   <h1>{product?.title}</h1>
+   <h1>{product?.name}</h1>
    <img src={product?.image}></img>
    <h1>{product?.description}</h1>
     
